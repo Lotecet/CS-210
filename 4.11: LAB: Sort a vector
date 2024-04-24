@@ -1,0 +1,43 @@
+/* Mitchell Gossman
+   4.11.1 Lab: Sort a vector
+   03/24/24 */
+
+#include <iostream>
+#include <vector>
+#include <algorithm>  // I found a feature in the algorithm library that sorts
+using namespace std;
+
+// function that sorts the user entered list
+void SortVector(vector<int>& myVec) {
+   sort(myVec.rbegin(), myVec.rend());
+}
+
+int main() {
+   
+   // Declared variables
+   int size;
+   
+   // Initial input from usre on the size of the vector
+   cin >> size;
+   
+   // Declaring the vector now that i know the size
+   vector<int> myVec(size);
+   
+   // loop to fill in the vector with the user's input based on the size
+   for (int i = 0; i < size; ++ i) {
+      cin >> myVec[i];
+   }
+   
+   // Calling the vector to be sorted by the function
+   SortVector(myVec);
+   
+   // Display the list myVec that is now sorted
+   for (int j: myVec) {
+      cout << j << ",";
+   }
+   
+   // end the line once the vector is finished
+   cout << endl;
+
+   return 0;
+}
