@@ -5,6 +5,8 @@ GOALS:
 This is my personal Githug account to share my coding formats and solutions for problems that I've come across both in school and real world experience.
 This is code that I have gathered in my CS-210 Programming Languages from assignments, labs and 3 projects.
 
+<This class I was only coding in C++>
+
 Thank you for reading.
 
 Mitch
