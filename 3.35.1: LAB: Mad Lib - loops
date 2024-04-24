@@ -1,0 +1,35 @@
+/* Mitchell Gossman
+   CS-210-R4728 Programming Languages 24EW4
+   3/17/24
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+
+   // Declared Varibles
+   string object;          // Variable to hold user input of the object or quit
+   int numb = 0;           // variable to hold the user input of the quantity
+   bool exitloop = false;  // boolean to help make sure the while loop is entered and exited
+
+   // Main code creating a loop for the user until they enter quit
+   while (!exitloop) {
+   
+      // two inputs from the user asking for the onbject and quantity
+      cin >> object;
+      cin >> numb;
+   
+      // a check to see if the user entered quit to exit the loop
+      if ((object == "quit") || (object == "Quit")) {
+         exitloop = true;
+         break;
+      }
+      
+      // outputting the results from the user into the desired phrase
+      cout << "Eating " << numb << " " << object;
+      cout << " a day keeps you happy and healthy." << endl;  
+   }
+   return 0;
+}
