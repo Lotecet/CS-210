@@ -1,0 +1,47 @@
+/* Mitchell Gossman
+   CS 210
+   04/11/24 */
+
+#include <string>
+#include <iostream>
+#include <limits> // Added so I can use the cin.ignore() 
+
+using namespace std;
+
+int main() {
+   // Declared variable
+   string inputName;
+   int age;
+   
+   // Set exception mask for cin stream
+   cin.exceptions(ios::failbit);
+
+   // Gets Users input for the inputName
+   cin >> inputName;
+   
+   // Loop to continue until user enters -1
+   while(inputName != "-1") {
+     
+      try {
+         
+         // Assigns input to the age variable
+         cin >> age;
+         // Outputs the name with the age + 1
+         cout << inputName << " " << (age + 1) << endl;
+      }
+      
+      // If there is an error with the input
+      catch (ios_base::failure&) {
+         // Clears the line
+         cin.clear(); 
+         // Removes everything else on the line
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+         // Outputs the name with a 0
+         cout << inputName << " 0" << endl;
+      }
+      
+      // Get new input name from the user
+      cin >> inputName;
+   }
+   return 0;
+}
