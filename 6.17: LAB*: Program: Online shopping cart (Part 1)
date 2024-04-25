@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+#include "ItemToPurchase.h"
+
+int main() {
+   
+   // Create ItemToPurchase class for first and second items
+   ItemToPurchase firstItem;
+   ItemToPurchase secondItem;
+   
+   // Declare the used variables
+   string itemName;
+   int itemPrice;
+   int itemQuantity;
+
+   // Display prompt and get inputs for the first item
+   cout << "Item 1" << endl << "Enter the item name:" << endl;
+   getline(cin, itemName);
+   cout << "Enter the item price:" << endl;
+   cin >> itemPrice;
+   cout << "Enter the item quantity:" << endl;
+   cin >> itemQuantity;
+   
+   // Add space between items
+   cin.ignore();
+   cout << endl;
+   
+   // Set user inputs to firstItem
+   firstItem.SetName(itemName);
+   firstItem.SetPrice(itemPrice);
+   firstItem.SetQuantity(itemQuantity);
+   
+   // Display prompt and get inputs for the second item
+   cout << "Item 2" << endl << "Enter the item name:" << endl;
+   getline(cin, itemName);
+   cout << "Enter the item price:" << endl;
+   cin >> itemPrice;
+   cout << "Enter the item quantity:" << endl;
+   cin >> itemQuantity;
+   
+   // Add space between items
+   cin.ignore();
+   cout << endl;
+   
+   // Set user inputs to firstItem
+   secondItem.SetName(itemName);
+   secondItem.SetPrice(itemPrice);
+   secondItem.SetQuantity(itemQuantity);
+   
+   
+   // Begin displaying total costs
+   cout << "TOTAL COST" << endl;
+   
+   // Display item, price and quantity for the first item
+   cout << firstItem.GetName() << " " << firstItem.GetQuantity() << " @ $" << firstItem.GetPrice() <<
+   " = $" << (firstItem.GetQuantity() * firstItem.GetPrice()) << endl;
+   
+   // Display item, price and quantity for the second item
+   cout << secondItem.GetName() << " " << secondItem.GetQuantity() << " @ $" << secondItem.GetPrice() <<
+   " = $" << (secondItem.GetQuantity() * secondItem.GetPrice()) << endl << endl;
+   
+   // Determine total of price * item for the first and second item and get the Sum Total
+   cout << "Total: $" << (firstItem.GetQuantity() * firstItem.GetPrice()) + 
+   (secondItem.GetQuantity() * secondItem.GetPrice()) << endl;
+   
+   return 0;
+}
