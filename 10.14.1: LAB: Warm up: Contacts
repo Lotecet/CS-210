@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class ContactNode {
+private:
+   // Class member Variables
+   string contactName;
+   string contactPhoneNumber;
+   ContactNode* nextNodePtr;
+
+public:
+   // Constructor
+   ContactNode(string name, string number) {
+      contactName = name;
+      contactPhoneNumber = number;
+      nextNodePtr = nullptr;
+   }
+   
+   // Get the name
+   string GetName() {
+      return contactName;
+   }
+   
+   // Get the contact number
+   string GetPhoneNumber() {
+      return contactPhoneNumber;
+   }
+   
+    // Get the next Pointer for the next contact info
+   ContactNode* GetNext() {
+      return nextNodePtr;   
+   }
+   
+   // Swaps pointer for reading next node
+   void InsertAfter(ContactNode* nextNode) {
+      ContactNode* tempNext = this->nextNodePtr;
+      this->nextNodePtr = nextNode;
+      nextNode->nextNodePtr = tempNext;
+      //delete tempNext;            // tried adding in for memory leaks, but didn't pass submissions
+   }
+   
+   // Get the next Contact person
+   void GetNext(ContactNode* nextNodeUp) {
+      nextNodePtr = nextNodeUp;
+   }
+   
+   // Print out results of Contact information
+   void PrintContactNode() {
+      cout << "Name: " << contactName << endl;
+      cout << "Phone number: " << contactPhoneNumber << endl << endl;
+   }
+};
+
+// Global Variables
+string name;
+string number;
+
+// Function to get line output for entering contact information
+void GetContactInfo() {
+   getline(cin, name);
+   getline(cin, number);
+}
+
+int main() {
+   
+   // Gather and assign user input for 1st entry
+   GetContactInfo();
+   ContactNode* person1 = new ContactNode(name, number);
+   
+   // Gather and assign user input for 2nd entry
+   GetContactInfo();
+   ContactNode* person2 = new ContactNode(name, number);
+   person1->InsertAfter(person2);
+   
+   // Gather and assign user input for 3rd entry
+   GetContactInfo();
+   ContactNode* person3 = new ContactNode(name, number);
+   person2->InsertAfter(person3);
+   
+   // Print the Initial Contact of the people
+   cout << "Person 1: " << person1->GetName() << ", " << person1->GetPhoneNumber() << endl;
+   cout << "Person 2: " << person2->GetName() << ", " << person2->GetPhoneNumber() << endl;
+   cout << "Person 3: " << person3->GetName() << ", " << person3->GetPhoneNumber() << endl << endl;
+   
+   //Print the Final Contact Information of people
+   ContactNode* currentNode = person1;  // Used as criteria for printing loop
+   
+   cout << "CONTACT LIST" << endl;
+   
+   while (currentNode != nullptr) {
+      currentNode->PrintContactNode();
+      currentNode = currentNode->GetNext();
+   }
+   
+   return 0;
+}
